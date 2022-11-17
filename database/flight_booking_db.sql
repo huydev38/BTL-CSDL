@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2020 at 10:21 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Nov 17, 2022 at 12:30 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,9 @@ CREATE TABLE `airlines_list` (
 INSERT INTO `airlines_list` (`id`, `airlines`, `logo_path`) VALUES
 (1, 'AirAsia', '1600999080_kisspng-flight-indonesia-airasia-airasia-japan-airline-tic-asia-5abad146966736.8321896415221927106161.jpg'),
 (2, 'Philippine Airlines', '1600999200_Philippine-Airlines-Logo.jpg'),
-(3, 'Cebu Pacific', '1600999200_43cada0008538e3c1a1f4675e5a7aabe.jpeg');
+(3, 'Cebu Pacific', '1600999200_43cada0008538e3c1a1f4675e5a7aabe.jpeg'),
+(4, 'huy', '1668363060_MRD_7366.JPG'),
+(6, 'vietnam', '');
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,9 @@ INSERT INTO `airport_list` (`id`, `airport`, `location`) VALUES
 (2, 'Beijing Capital International Airport', 'Chaoyang-Shunyi, Beijing'),
 (3, 'Los Angeles International Airport', 'Los Angeles, California'),
 (4, 'Dubai International Airport', 'Garhoud, Dubai'),
-(5, 'Mactan-Cebu Airport', 'Cebu');
+(5, 'Mactan-Cebu Airport', 'Cebu'),
+(6, 'hanoi', 'hanoi'),
+(7, 'Caugiay', 'cagaakjsf');
 
 -- --------------------------------------------------------
 
@@ -84,8 +88,12 @@ CREATE TABLE `booked_flight` (
 --
 
 INSERT INTO `booked_flight` (`id`, `flight_id`, `name`, `address`, `contact`) VALUES
-(2, 3, 'James Smith', 'Sample Address', '+4545 6456'),
-(3, 4, 'John Smith', 'Sample Address', '+18456-5455-55');
+(2, 3, 'James Smiths', 'Sample Address', '+4545 6456'),
+(3, 4, 'John Smith', 'Sample Address', '+18456-5455-55'),
+(5, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
+(6, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
+(7, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
+(10, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641');
 
 -- --------------------------------------------------------
 
@@ -111,10 +119,10 @@ CREATE TABLE `flight_list` (
 --
 
 INSERT INTO `flight_list` (`id`, `airline_id`, `plane_no`, `departure_airport_id`, `arrival_airport_id`, `departure_datetime`, `arrival_datetime`, `seats`, `price`, `date_created`) VALUES
-(1, 1, 'GB623-14', 1, 3, '2020-10-07 04:00:00', '2020-10-21 10:00:00', 150, 7500, '2020-09-25 11:23:52'),
-(2, 2, 'TIPS14-15', 1, 2, '2020-10-14 11:00:00', '2020-10-16 09:00:00', 100, 5000, '2020-09-25 11:46:12'),
 (3, 3, 'CEB-1101', 5, 1, '2020-09-30 08:00:00', '2020-09-30 08:45:00', 100, 2500, '2020-09-25 11:57:31'),
-(4, 3, 'CEB10023', 1, 5, '2020-10-07 01:00:00', '2020-10-07 01:45:00', 100, 2500, '2020-09-25 14:50:47');
+(4, 1, 'CEB10023', 1, 5, '2020-10-07 01:00:00', '2020-10-07 01:45:00', 100, 2500, '2020-09-25 14:50:47'),
+(5, 4, 'CBR', 2, 3, '2022-11-14 23:43:00', '2022-11-18 23:44:00', 100, 222, '2022-11-14 23:43:18'),
+(7, 1, '123', 4, 5, '2022-11-16 22:47:00', '2022-11-24 22:47:00', 100, 300, '2022-11-15 22:48:12');
 
 -- --------------------------------------------------------
 
@@ -187,13 +195,17 @@ ALTER TABLE `airport_list`
 -- Indexes for table `booked_flight`
 --
 ALTER TABLE `booked_flight`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `flight_id` (`flight_id`);
 
 --
 -- Indexes for table `flight_list`
 --
 ALTER TABLE `flight_list`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `airline_id` (`airline_id`),
+  ADD KEY `arrival_airport_id` (`arrival_airport_id`),
+  ADD KEY `departure_airport_id` (`departure_airport_id`);
 
 --
 -- Indexes for table `system_settings`
@@ -212,28 +224,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `airlines_list`
---
-ALTER TABLE `airlines_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `airport_list`
---
-ALTER TABLE `airport_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `booked_flight`
 --
 ALTER TABLE `booked_flight`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `flight_list`
---
-ALTER TABLE `flight_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -246,6 +240,24 @@ ALTER TABLE `system_settings`
 --
 ALTER TABLE `users`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booked_flight`
+--
+ALTER TABLE `booked_flight`
+  ADD CONSTRAINT `booked_flight_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight_list` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `flight_list`
+--
+ALTER TABLE `flight_list`
+  ADD CONSTRAINT `flight_list_ibfk_1` FOREIGN KEY (`airline_id`) REFERENCES `airlines_list` (`id`),
+  ADD CONSTRAINT `flight_list_ibfk_2` FOREIGN KEY (`arrival_airport_id`) REFERENCES `airport_list` (`id`),
+  ADD CONSTRAINT `flight_list_ibfk_3` FOREIGN KEY (`departure_airport_id`) REFERENCES `airport_list` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
