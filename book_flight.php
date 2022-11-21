@@ -6,6 +6,8 @@
 			<div class="col-md-3">
 			<label for="" class="control-label">Person/s</label>
 			<input type="number" class="form-control text-right" min='1' value="1" id="count" max="<?php echo $_GET['max'] ?>">
+			<label for="" class="control-label">Buyer's Phone</label>
+			<input required class="form-control" name="buyerTele" placeholder="Require"> 
 			</div>
 			<div class="col-md-2">
 			<label for="" class="control-label">&nbsp;</label>

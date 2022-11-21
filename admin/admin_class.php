@@ -71,6 +71,12 @@ Class Action {
 			return 1;
 		}
 	}
+	function delete_user(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM users where id = ".$id);
+		if($delete)
+			return 1;
+	}
 	function signup(){
 		extract($_POST);
 		$data = " name = '$name' ";
@@ -217,7 +223,7 @@ Class Action {
 			$data .= " , name = '$name[$k]' ";
 			$data .= " , address = '$address[$k]' ";
 			$data .= " , contact = '$contact[$k]' ";
-
+			$data .= ", buyerTele = '$buyerTele'";
 			$save[] = $this->db->query("INSERT INTO booked_flight set ".$data);
 		}
 		if(isset($save))

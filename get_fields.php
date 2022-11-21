@@ -1,3 +1,4 @@
+
 <?php for($i = 0; $i < $_GET['count']; $i++ ): ?>
 <hr>
 <div class="row">

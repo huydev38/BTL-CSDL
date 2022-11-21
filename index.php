@@ -116,10 +116,10 @@
                 </div>
             </div>
             <br>
-            <div class="container"><div class="small text-center text-muted"> <?php echo $_SESSION['setting_name'] ?> | <a href="https://www.campcodes.com" target="_blank">CampCodes</a></div></div>
+            <div class="container"><div class="small text-center text-muted"> <?php echo $_SESSION['setting_name'] ?> </div>
         </footer>
         
-       <?php include('footer.php') ?>
+        <?php include('footer.php') ?>
     </body>
 
     <?php $conn->close() ?>

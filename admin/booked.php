@@ -43,6 +43,7 @@
 						 		<p>Name :<b><?php echo $row['name'] ?></b></p>
 						 		<p><small>Contact # :<b><?php echo $row['contact'] ?></small></b></p>
 						 		<p><small>Address :<b><?php echo $row['address'] ?></small></b></p>
+								 <p><small>Buyer Telephone :<b><?php echo $row['buyerTele'] ?></small></b></p>
 						 	</td>
 						 	<td>
 						 		<div class="row">

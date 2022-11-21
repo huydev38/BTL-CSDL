@@ -72,11 +72,13 @@ include 'admin/db_connect.php';
                                                Round Trip
                                               </label>
                                             </div>
+                                            
                                         </div>
-                                        <div class="col-sm-3 offset-sm-5">
+                                        <div class="col-sm-2 text-center">
                                             <button class="btn btn-block btn-sm btn-primary" type="submit"><i class="fa fa-plane-departure"></i> Find Flights</button>
                                         </div>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>
