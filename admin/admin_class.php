@@ -138,7 +138,7 @@ Class Action {
 	function save_airlines(){
 		extract($_POST);
 		
-		$data = " ,airlines = '$airlines' ";
+		$data = " airlines = '$airlines' ";
 		if(!empty($_FILES['img']['tmp_name'])){
 			$fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['img']['name'];
 			$move = move_uploaded_file($_FILES['img']['tmp_name'], '../assets/img/'.$fname);
@@ -150,7 +150,7 @@ Class Action {
 		if($res["id"]==$id){
 			$save = $this->db->query("UPDATE airlines_list set ".$data." where id=".$id);
 		}else{
-			$save = $this->db->query("INSERT INTO airlines_list set id = ".$id.$data);
+			$save = $this->db->query("INSERT INTO airlines_list set id = ".$id.",".$data);
 		}
 		if(isset($save))
 			return 1;

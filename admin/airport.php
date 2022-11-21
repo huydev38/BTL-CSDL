@@ -122,20 +122,20 @@
 		    method: 'POST',
 		    type: 'POST',
 			success:function(resp){
-				if(resp==1){
-					alert_toast("Data successfully added",'success')
-					setTimeout(function(){
-						location.reload()
-					},1500)
-
-				}
-				else if(resp==2){
+				// if(resp==1){
 					alert_toast("Data successfully updated",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)
 
-				}
+				// }
+				// else if(resp==2){
+				// 	alert_toast("Data successfully updated",'success')
+				// 	setTimeout(function(){
+				// 		location.reload()
+				// 	},1500)
+
+				// }
 			}
 		})
 	})

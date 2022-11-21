@@ -130,12 +130,10 @@ if(isset($_GET['id'])){
 	 		method:'POST',
 	 		data:$(this).serialize(),
 	 		success:function(resp){
-	 			if(resp == 1){
-	 				alert_toast("Flight successfully saved.","success");
-	 				setTimeout(function(e){
-	 					location.reload()
-	 				},1500)
-	 			}
+				alert_toast("Data successfully updated",'success')
+					setTimeout(function(){
+						location.reload()
+					},1500)
 	 		}
 	 	})
 	 })
