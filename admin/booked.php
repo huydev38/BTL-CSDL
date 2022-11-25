@@ -111,6 +111,13 @@ function delete_booked($id){
 					},1500)
 
 				}
+				else{
+					alert_toast("Flights associate to this booking must be deleted first",'warning')
+					
+					setTimeout(function(){
+						location.reload()
+					},1500)
+				}
 			}
 		})
 	}

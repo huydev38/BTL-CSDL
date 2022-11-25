@@ -176,6 +176,13 @@
 					},1500)
 
 				}
+				else{
+					alert_toast("Flights associate to this airport must be deleted first",'warning')
+					
+					setTimeout(function(){
+						location.reload()
+					},1500)
+				}
 			}
 		})
 	}

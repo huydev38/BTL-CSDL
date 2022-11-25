@@ -164,8 +164,9 @@ Class Action {
 	function delete_booked(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM booked_flight where id = ".$id);
-		if($delete)
+		if($delete){
 			return 1;
+		}
 	}
 	function save_airports(){
 		extract($_POST);

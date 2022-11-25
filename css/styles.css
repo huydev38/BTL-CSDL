@@ -4888,6 +4888,18 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #0b2e13;
 }
 
+.alert-fail {
+  color: red;
+  background-color: red;
+  border-color: red;
+}
+.alert-fail hr {
+  border-top-color: red;
+}
+.alert-fail .alert-link {
+  color: red;
+}
+
 .alert-info {
   color: #0c5460;
   background-color: #d1ecf1;

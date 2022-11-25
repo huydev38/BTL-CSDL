@@ -151,7 +151,7 @@
 		end_load()
 	})
 	$('.delete_airline').click(function(){
-		_conf("Are you sure to delete this airline?","delete_airline",[$(this).attr('data-id')])
+		_conf("Are you sure to delete this airline? ","delete_airline",[$(this).attr('data-id')])
 	})
 	function displayImg(input,_this) {
     if (input.files && input.files[0]) {
@@ -175,7 +175,13 @@
 					setTimeout(function(){
 						location.reload()
 					},1500)
-
+					
+				}else{
+					alert_toast("Flights associate to this airline must be deleted first",'warning')
+					
+					setTimeout(function(){
+						location.reload()
+					},1500)
 				}
 			}
 		})
