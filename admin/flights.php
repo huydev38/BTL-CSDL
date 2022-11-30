@@ -13,12 +13,13 @@
 				<table class="table table-bordered" id="flight-list">
 					<colgroup>
 						<col width="10%">
-						<col width="35%">
+						<col width="30%">
 						<col width="10%">
 						<col width="10%">
 						<col width="10%">
 						<col width="10%">
-						<col width="15%">
+						<col width="10%">
+						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -28,6 +29,7 @@
 							<th class="text-center">Booked</th>
 							<th class="text-center">Available</th>
 							<th class="text-center">Price</th>
+							<th class="text-center">Total Revenue</th>
 							<th class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -39,8 +41,7 @@
 							}
 							$qry = $conn->query("SELECT f.*,a.airlines,a.logo_path FROM flight_list f inner join airlines_list a on f.airline_id = a.id  order by id desc");
 							 while($row = $qry->fetch_assoc()):
-								$booked = $conn->query("SELECT * FROM flight_list")->num_rows;
-
+								$booked = $conn->query("SELECT * FROM booked_flight where flight_id=".$row['id'])->num_rows;
 						 ?>
 						 <tr>
 						 	
@@ -62,7 +63,9 @@
 						 	<td class="text-right"><?php echo $row['seats'] ?></td>
 						 	<td class="text-right"><?php echo $booked ?></td>
 						 	<td class="text-right"><?php echo $row['seats'] - $booked ?></td>
+			
 						 	<td class="text-right"><?php echo number_format($row['price'],2) ?></td>
+							<td class="text-right"><?php echo number_format($row['price']*$booked,2) ?></td>
 						 	<td class="text-center">
 						 			<button class="btn btn-outline-primary btn-sm edit_flight" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-edit"></i></button>
 						 			<button class="btn btn-outline-danger btn-sm delete_flight" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-trash"></i></button>

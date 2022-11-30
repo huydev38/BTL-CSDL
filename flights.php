@@ -115,8 +115,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 					<div class="col-md-6">
 						 <p><b><?php echo $aname[$row['departure_airport_id']].' - '.$aname[$row['arrival_airport_id']] ?></b></p>
 						 <p><small>Airline: <b><?php echo $row['airlines'] ?></b></small></p>
-						 <p><small>Departure: <b><?php echo date('h:i A',strtotime($row['departure_datetime'])) ?></b></small></p>
-						 <p><small>Arrival: <b><?php echo (date('M d,Y',strtotime($row['departure_datetime'])) == date('M d,Y',strtotime($row['arrival_datetime']))) ? date('h:i A',strtotime($row['arrival_datetime'])) : date('M d,Y h:i A',strtotime($row['arrival_datetime'])) ?></b></small></p>
+						 <p><small>Departure: <b><?php echo date('M d,Y h:i A',strtotime($row['departure_datetime'])) ?></small></b></p>
+						 <p><small>Arrival: <b><?php echo date('M d,Y h:i A',strtotime($row['arrival_datetime'])) ?></small></b></p>
 						 <p>Available Seats : <b><h4><?php echo $row['seats'] - $booked ?></h4></b></p>
 					</div>
 					<div class="col-md-3 text-center align-self-end-sm">
@@ -161,8 +161,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 					<div class="col-md-6">
 						 <p><b><?php echo $aname[$row['departure_airport_id']].' - '.$aname[$row['arrival_airport_id']] ?></b></p>
 						 <p><small>Airline: <b><?php echo $row['airlines'] ?></b></small></p>
-						 <p><small>Departure: <b><?php echo date('h:i A',strtotime($row['departure_datetime'])) ?></b></small></p>
-						 <p><small>Arrival: <b><?php echo (date('M d,Y',strtotime($row['departure_datetime'])) == date('M d,Y',strtotime($row['arrival_datetime']))) ? date('h:i A',strtotime($row['arrival_datetime'])) : date('M d,Y h:i A',strtotime($row['arrival_datetime'])) ?></b></small></p>
+						 <p><small>Departure: <b><?php echo date('M d,Y h:i A',strtotime($row['departure_datetime'])) ?></small></b></p>
+						 <p><small>Arrival: <b><?php echo date('M d,Y h:i A',strtotime($row['arrival_datetime'])) ?></small></b></p>
 						 <p>Available Seats : <b><h4><?php echo $row['seats'] - $booked ?></h4></b></p>
 					</div>
 					<div class="col-md-3 text-center align-self-end-sm">

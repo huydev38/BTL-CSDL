@@ -36,7 +36,8 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=flights"></span>Flight List</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
-                        
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=booking_search">Booking Search</a></li>
+
                      
                     </ul>
                 </div>
