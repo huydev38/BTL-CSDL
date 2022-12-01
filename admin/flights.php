@@ -45,7 +45,7 @@
 						 ?>
 						 <tr>
 						 	
-						 	<td><?php echo date('M d,Y',strtotime($row['date_created'])) ?></td>
+						 	<td class="text-center"><?php echo date('M d,Y',strtotime($row['date_created'])) ?></td>
 						 	<td>
 						 		<div class="row">
 						 		<div class="col-sm-4">

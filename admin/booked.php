@@ -38,7 +38,7 @@
 						 ?>
 						 <tr>
 						 	
-						 	<td><?php echo $i++ ?></td>
+						 	<td class="text-center"><?php echo $i++ ?></td>
 						 	<td>
 						 		<p>Name :<b><?php echo $row['name'] ?></b></p>
 						 		<p><small>Contact # :<b><?php echo $row['contact'] ?></small></b></p>

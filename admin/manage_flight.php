@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
 				<div class="col-md-8">
 					<div class="form-group">
 						<label for="" class="control-label">Airline</label>
-						<select name="airline" id="airline" class="custom-select browser-default select2">
+						<select required name="airline" id="airline" class="custom-select browser-default select2">
 							<option></option>
 							<?php 
 							$airline = $conn->query("SELECT * FROM airlines_list order by airlines asc");
@@ -48,7 +48,7 @@ if(isset($_GET['id'])){
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Departure Location</label>
-						<select name="departure_airport_id" id="departure_location" class="custom-select browser-default select2">
+						<select required name="departure_airport_id" id="departure_location" class="custom-select browser-default select2">
 							<option value=""></option>
 						<?php
 							$airport = $conn->query("SELECT * FROM airport_list order by airport asc");
@@ -63,7 +63,7 @@ if(isset($_GET['id'])){
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Arrival Location</label>
-						<select name="arrival_airport_id" id="arrival_airport_id" class="custom-select browser-default select2">
+						<select required name="arrival_airport_id" id="arrival_airport_id" class="custom-select browser-default select2">
 
 							<option value=""></option>
 
@@ -82,13 +82,13 @@ if(isset($_GET['id'])){
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Departure Data/Time</label>
-						<input type="text" name="departure_datetime" id="departure_datetime" class="form-control datetimepicker" value="<?php echo isset($departure_datetime) ? date("Y-m-d H:i",strtotime($departure_datetime)) : '' ?>">
+						<input required type="text" name="departure_datetime" id="departure_datetime" class="form-control datetimepicker" value="<?php echo isset($departure_datetime) ? date("Y-m-d H:i",strtotime($departure_datetime)) : '' ?>">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Arrival Data/Time</label>
-						<input type="text" name="arrival_datetime" id="arrival_datetime" class="form-control datetimepicker" value="<?php echo isset($arrival_datetime) ? date("Y-m-d H:i",strtotime($arrival_datetime)) : '' ?>">
+						<input required type="text" name="arrival_datetime" id="arrival_datetime" class="form-control datetimepicker" value="<?php echo isset($arrival_datetime) ? date("Y-m-d H:i",strtotime($arrival_datetime)) : '' ?>">
 					</div>
 				</div>
 			</div>
@@ -96,13 +96,13 @@ if(isset($_GET['id'])){
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Seats</label>
-						<input name="seats" id="seats" type="number" step="any" class="form-control text-right" value="<?php echo isset($seats) ? $seats : '' ?>">
+						<input required name="seats" id="seats" type="number" step="any" class="form-control text-right" value="<?php echo isset($seats) ? $seats : '' ?>">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="">
 						<label for="">Price</label>
-						<input name="price" id="price" type="number" step="any" class="form-control text-right" value="<?php echo isset($price) ? $price : '' ?>">
+						<input required name="price" id="price" type="number" step="any" class="form-control text-right" value="<?php echo isset($price) ? $price : '' ?>">
 					</div>
 				</div>
 			</div>

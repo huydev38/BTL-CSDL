@@ -75,6 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 						 <p><small>Departure: <b><?php echo date('M d,Y h:i A',strtotime($row['departure_datetime'])) ?></small></b></p>
 						 <p><small>Arrival: <b><?php echo date('M d,Y h:i A',strtotime($row['arrival_datetime'])) ?></small></b></p>
                          <p><small>Status: <b><?php echo($row['arrival_datetime']>date("Y-m-d"))?"Incoming":"Arrived"?></small></b></p>
+						 <p><small>Date Booked: <b><?php echo date('M d,Y',strtotime($row['date_booked'])) ?></b></small></p>
                          <p><small>Price: <b><?php echo $row['price'] ?></b></small></p>
                          <!-- them tong tien + thong tin hanh khach -->
 
