@@ -109,7 +109,7 @@ include 'admin/db_connect.php';
                             <img class="img-fluid" src="assets/img/<?php echo $row['logo_path'] ?>" alt="" />
                             
                         <div class="port-content text-center">
-                           <a class="btn-primary btn">Find Flights</a>
+                           <a href="index.php?page=flights" class="btn-primary btn">Find Flights</a>
                         </div>
                         </div>
                     </div>
