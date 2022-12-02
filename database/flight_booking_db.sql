@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2022 at 12:30 PM
+-- Generation Time: Dec 02, 2022 at 07:15 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -38,11 +38,11 @@ CREATE TABLE `airlines_list` (
 --
 
 INSERT INTO `airlines_list` (`id`, `airlines`, `logo_path`) VALUES
-(1, 'AirAsia', '1600999080_kisspng-flight-indonesia-airasia-airasia-japan-airline-tic-asia-5abad146966736.8321896415221927106161.jpg'),
-(2, 'Philippine Airlines', '1600999200_Philippine-Airlines-Logo.jpg'),
-(3, 'Cebu Pacific', '1600999200_43cada0008538e3c1a1f4675e5a7aabe.jpeg'),
-(4, 'huy', '1668363060_MRD_7366.JPG'),
-(6, 'vietnam', '');
+(1, 'Viet Nam Airlines', '1669052100_9d8ed5_a5c0219027ac495a8926bbd6f01d1c42_mv2.jpg'),
+(2, 'VietJet Air', '1669052100_1571733729-logo-vietjet-air-15-13-34-40.jpg'),
+(3, 'Bamboo Airways', '1669825980_Logo-Bamboo-Airways-V.webp'),
+(4, 'Jetstar ', '1669826040_jetstar-logo-inkythuatso-14-10-44-31.jpg'),
+(5, 'VietTravel Airlines', '1669826100_Logo_của_Vietravel_Airlines.png');
 
 -- --------------------------------------------------------
 
@@ -61,13 +61,12 @@ CREATE TABLE `airport_list` (
 --
 
 INSERT INTO `airport_list` (`id`, `airport`, `location`) VALUES
-(1, 'NAIA', 'Metro Manila'),
-(2, 'Beijing Capital International Airport', 'Chaoyang-Shunyi, Beijing'),
-(3, 'Los Angeles International Airport', 'Los Angeles, California'),
-(4, 'Dubai International Airport', 'Garhoud, Dubai'),
-(5, 'Mactan-Cebu Airport', 'Cebu'),
-(6, 'hanoi', 'hanoi'),
-(7, 'Caugiay', 'cagaakjsf');
+(1, 'Noi Bai', 'Ha Noi, Viet Nam\r\n'),
+(2, 'Tan Son Nhat', 'Ho Chi Minh, Viet Nam'),
+(3, 'Cam Ranh', 'Khanh Hoa, Viet Nam'),
+(4, 'Tân Khương', 'Lâm Đồng, Việt Nam'),
+(5, 'Vân Đồn', 'Quảng Ninh, Việt Nam\r\n'),
+(6, 'Đà Nẵng', 'Quảng Nam, Việt Nam');
 
 -- --------------------------------------------------------
 
@@ -80,20 +79,21 @@ CREATE TABLE `booked_flight` (
   `flight_id` int(30) NOT NULL,
   `name` text NOT NULL,
   `address` text NOT NULL,
-  `contact` text NOT NULL
+  `contact` text NOT NULL,
+  `buyerTele` varchar(11) NOT NULL,
+  `date_booked` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booked_flight`
 --
 
-INSERT INTO `booked_flight` (`id`, `flight_id`, `name`, `address`, `contact`) VALUES
-(2, 3, 'James Smiths', 'Sample Address', '+4545 6456'),
-(3, 4, 'John Smith', 'Sample Address', '+18456-5455-55'),
-(5, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
-(6, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
-(7, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641'),
-(10, 7, 'Nguyễn Quang Huy', 'La Khe Ha Dong', '0376551641');
+INSERT INTO `booked_flight` (`id`, `flight_id`, `name`, `address`, `contact`, `buyerTele`, `date_booked`) VALUES
+(22, 1, 'Vũ Hương Giang', 'La Khe Ha Dong', '0376551641', '0376551641', '2022-11-30 06:53:12'),
+(38, 5, 'Huy Nguyen Quang', 'La Khe Ha Dong', '0376551641', '0376551641', '2022-11-30 06:55:56'),
+(39, 6, 'James Smiths', 'America', '0012345678', '0376551642', '2022-12-01 09:11:46'),
+(40, 7, 'Huy Nguyen Quang', 'La Khe Ha Dong', '0376551641', '0012', '2022-12-02 06:14:28'),
+(41, 7, 'Huy Nguyen Quang', 'La Khe Ha Dong', '0376551641', '0012', '2022-12-02 06:14:28');
 
 -- --------------------------------------------------------
 
@@ -119,10 +119,12 @@ CREATE TABLE `flight_list` (
 --
 
 INSERT INTO `flight_list` (`id`, `airline_id`, `plane_no`, `departure_airport_id`, `arrival_airport_id`, `departure_datetime`, `arrival_datetime`, `seats`, `price`, `date_created`) VALUES
-(3, 3, 'CEB-1101', 5, 1, '2020-09-30 08:00:00', '2020-09-30 08:45:00', 100, 2500, '2020-09-25 11:57:31'),
-(4, 1, 'CEB10023', 1, 5, '2020-10-07 01:00:00', '2020-10-07 01:45:00', 100, 2500, '2020-09-25 14:50:47'),
-(5, 4, 'CBR', 2, 3, '2022-11-14 23:43:00', '2022-11-18 23:44:00', 100, 222, '2022-11-14 23:43:18'),
-(7, 1, '123', 4, 5, '2022-11-16 22:47:00', '2022-11-24 22:47:00', 100, 300, '2022-11-15 22:48:12');
+(1, 2, 'Airbus326', 1, 2, '2022-11-29 13:34:00', '2022-12-03 13:34:00', 100, 200, '2022-11-25 13:33:29'),
+(2, 1, 'Airbus327', 1, 2, '2022-11-29 13:34:00', '2022-12-03 13:34:00', 100, 200, '2022-11-25 13:34:24'),
+(4, 1, 'ajf;as', 3, 2, '2022-11-26 13:52:00', '2022-11-27 13:52:00', 100, 500, '2022-11-25 13:52:34'),
+(5, 2, 'safsf', 3, 1, '2022-12-01 13:55:00', '2022-12-16 13:55:00', 100, 100, '2022-11-30 13:54:59'),
+(6, 1, 'Airbus A320', 1, 6, '2022-12-02 16:10:00', '2022-12-02 19:00:00', 100, 300, '2022-12-01 16:10:49'),
+(7, 3, 'Airbus', 5, 6, '2022-12-03 13:13:00', '2022-12-03 16:00:00', 100, 200, '2022-12-02 13:13:52');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ CREATE TABLE `system_settings` (
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `cover_img`, `about_content`) VALUES
-(1, 'Online Flight Booking System', 'info@sample.comm', '+6948 8542 623', '1600998360_travel-cover.jpg', '&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;background: transparent; position: relative; font-size: 14px;&quot;&gt;&lt;span style=&quot;font-size:28px;background: transparent; position: relative;&quot;&gt;&lt;b style=&quot;margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; text-align: justify;&quot;&gt;Lorem Ipsum&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-weight: 400; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
+(1, 'Online Flight Booking System', 'bookingcenter@email.vn', '+84 234567890', '1669792320_1287373.jpg', '&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;background: transparent; position: relative;&quot;&gt;&lt;font color=&quot;#000000&quot; face=&quot;Open Sans, Arial, sans-serif&quot;&gt;&lt;b&gt;Welcome to Flight Booking System. This sample system is an assignment of Database course, made by group 9.&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
 
 -- --------------------------------------------------------
 
@@ -168,12 +170,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `doctor_id`, `name`, `address`, `contact`, `username`, `password`, `type`) VALUES
-(1, 0, 'Administrator', '', '', 'admin', 'admin123', 1),
-(7, 0, 'George Wilson', 'Sample Only', '+18456-5455-55', 'gwilson@sample.com', 'd40242fb23c45206fadee4e2418f274f', 3),
-(9, 2, 'DR.James Smith, M.D.', 'Sample Clinic Address', '+1456 554 55623', 'jsmith@sample.com', 'jsmith123', 2),
-(10, 3, 'DR.Claire Blake, M.D.', 'Sample Only', '+5465 555 623', 'cblake@sample.com', 'blake123', 2),
-(11, 0, 'Sample Only', 'Sample', '+5465 546 4556', 'sample@sample.com', '4e91b1cbe42b5c884de47d4c7fda0555', 3),
-(15, 9, 'DR.Sample Doctor, M.D.', 'Sample Address', '+1235 456 623', 'sample2@sample.com', 'sample123', 2);
+(1, 0, 'Administrator', '', '', 'admin', 'admin123', 1);
 
 --
 -- Indexes for dumped tables
@@ -227,7 +224,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booked_flight`
 --
 ALTER TABLE `booked_flight`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -249,15 +246,15 @@ ALTER TABLE `users`
 -- Constraints for table `booked_flight`
 --
 ALTER TABLE `booked_flight`
-  ADD CONSTRAINT `booked_flight_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight_list` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `booked_flight_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight_list` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `flight_list`
 --
 ALTER TABLE `flight_list`
-  ADD CONSTRAINT `flight_list_ibfk_1` FOREIGN KEY (`airline_id`) REFERENCES `airlines_list` (`id`),
-  ADD CONSTRAINT `flight_list_ibfk_2` FOREIGN KEY (`arrival_airport_id`) REFERENCES `airport_list` (`id`),
-  ADD CONSTRAINT `flight_list_ibfk_3` FOREIGN KEY (`departure_airport_id`) REFERENCES `airport_list` (`id`);
+  ADD CONSTRAINT `flight_list_ibfk_1` FOREIGN KEY (`airline_id`) REFERENCES `airlines_list` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `flight_list_ibfk_2` FOREIGN KEY (`arrival_airport_id`) REFERENCES `airport_list` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `flight_list_ibfk_3` FOREIGN KEY (`departure_airport_id`) REFERENCES `airport_list` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
